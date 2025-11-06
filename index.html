@@ -6,6 +6,19 @@
   <title>Namaz Time • Your Personal Prayer Companion</title>
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="stylesheet" href="styles.css">
+
+  <!-- ✅ Move manifest link here (inside head) -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0a23">
+
+  <!-- ✅ Register service worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch(err => console.error("❌ SW registration failed:", err));
+    }
+  </script>
 </head>
 <body>
   <div class="app" id="app" data-theme="dark">
@@ -68,16 +81,6 @@
         <div class="divider"></div>
         <div class="small">Mark a prayer as <em>Missed</em> or <em>Made Up</em>. Stored on your device.</div>
       </section>
-      
-      <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0a0a23">
-
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(() => console.log("Service Worker Registered"));
-  }
-</script>
 
       <section class="card" id="tab-settings" hidden>
         <strong>Notifications & Preferences</strong>
@@ -121,6 +124,7 @@
 
     <footer>© <span id="year"></span> NamazGuide • Built for accuracy & ease</footer>
   </div>
+
   <script src="script.js" defer></script>
 </body>
 </html>
