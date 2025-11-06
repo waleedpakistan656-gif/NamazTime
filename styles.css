@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+header, footer {
+  text-align: center;
+  padding: 1em;
+  background: #1e293b;
+}
+.card {
+  background: #1e293b;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+}
+.btn {
+  background: #0ea5e9;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #0ea5e9;
+}
+.tabs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #1e293b;
+  display: flex;
+  justify-content: center;
+}
+.tabbar {
+  display: flex;
+  gap: 8px;
+}
+.tab {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.6em;
+}
+.tab.active {
+  border-bottom: 3px solid #0ea5e9;
+}

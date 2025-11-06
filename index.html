@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Namaz Time • Your Personal Prayer Companion</title>
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app" data-theme="dark">
+    <header>
+      <div class="title">
+        <div class="logo">NG</div>
+        <div>
+          <div class="appname">Namaz Time</div>
+          <div class="subtitle">Your Personal Prayer Companion</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn ghost" id="themeBtn" aria-label="Toggle theme">🎨 Theme</button>
+          <button class="btn ghost" id="locBtn" aria-label="Update location">📍 Location</button>
+        </div>
+      </div>
+      <div class="toolbar">
+        <span class="pill" id="locLabel">Detecting location…</span>
+        <span class="pill" id="dateLabel"></span>
+        <span class="pill next" id="nextLabel">Next: --</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="tab-home" role="region" aria-label="Today">
+        <div class="row">
+          <div><strong>Today’s Prayer Timings</strong><div class="small" id="methodLabel"></div></div>
+          <button class="btn primary" id="notifyBtn">🔔 Enable Reminders</button>
+        </div>
+        <div class="timings" id="timingsGrid"></div>
+        <div class="divider"></div>
+        <div class="kpi">
+          <div class="chip"><strong>Ramadan</strong>: <span id="ramadanSpan" class="small">—</span></div>
+          <div class="chip"><strong>Eid</strong>: <span id="eidSpan" class="small">—</span></div>
+        </div>
+      </section>
+
+      <section class="card" id="tab-qibla" hidden>
+        <div class="row"><strong>Qibla Direction</strong> <span class="badge" id="qAngle">—°</span></div>
+        <div class="qibla-compass" aria-label="Qibla Compass">
+          <div class="q-needle" id="qNeedle" style="transform: rotate(0deg);"></div>
+          <div class="q-center"></div>
+        </div>
+        <div class="small">Rotate your phone; needle points toward the Qibla (Kaaba).</div>
+      </section>
+
+      <section class="card" id="tab-dua" hidden>
+        <div class="row"><strong>Daily Dua & Hadith</strong> <button class="btn" id="refreshDua">↻ Refresh</button></div>
+        <div style="margin-top:8px" id="duaBox"></div>
+        <div class="divider"></div>
+        <div class="small">Tip: Check this daily to build a consistent habit.</div>
+      </section>
+
+      <section class="card" id="tab-tracker" hidden>
+        <div class="row"><strong>Missed Prayer Tracker</strong><span class="badge" id="trackerDate"></span></div>
+        <div class="list" id="trackerList" style="margin-top:8px"></div>
+        <div class="divider"></div>
+        <button class="btn" id="prevDay">◀ Yesterday</button>
+        <button class="btn" id="todayBtn">Today</button>
+        <button class="btn" id="nextDay">Tomorrow ▶</button>
+        <div class="divider"></div>
+        <div class="small">Mark a prayer as <em>Missed</em> or <em>Made Up</em>. Stored on your device.</div>
+      </section>
+
+      <section class="card" id="tab-settings" hidden>
+        <strong>Notifications & Preferences</strong>
+        <div class="divider"></div>
+        <label class="switch"><input type="checkbox" id="remindToggle"> Enable prayer reminders</label>
+        <div class="hint">Reminders ring a few minutes before each prayer.</div>
+        <div style="height:8px"></div>
+        <label>Minutes before prayer</label>
+        <input type="number" id="minsBefore" min="0" max="60" value="10" />
+        <div class="divider"></div>
+        <label>Calculation Method</label>
+        <select id="methodSelect">
+          <option value="2">ISNA (North America)</option>
+          <option value="3">MWL (Muslim World League)</option>
+          <option value="4" selected>Umm Al-Qura, Makkah</option>
+          <option value="5">Egyptian General Authority</option>
+          <option value="12">Gulf Region</option>
+          <option value="13">Kuwait</option>
+          <option value="14">Qatar</option>
+          <option value="15">Singapore</option>
+          <option value="16">Turkey</option>
+        </select>
+        <div class="divider"></div>
+        <label>Manual City (optional)</label>
+        <input type="text" id="manualCity" placeholder="e.g., Karachi, PK" />
+        <div class="hint">If geolocation fails, set a city/country and we’ll use it for Ramadan/Eid calendars.</div>
+        <div class="divider"></div>
+        <button class="btn primary" id="savePrefs">💾 Save Preferences</button>
+      </section>
+    </main>
+
+    <div class="tabs" role="tablist" aria-label="Navigation">
+      <div class="tabbar">
+        <button class="tab active" data-tab="home">🏠 Home</button>
+        <button class="tab" data-tab="qibla">🧭 Qibla</button>
+        <button class="tab" data-tab="dua">📜 Dua</button>
+        <button class="tab" data-tab="tracker">📝 Tracker</button>
+        <button class="tab" data-tab="settings">⚙️ Settings</button>
+      </div>
+    </div>
+
+    <footer>© <span id="year"></span> NamazGuide • Built for accuracy & ease</footer>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>
