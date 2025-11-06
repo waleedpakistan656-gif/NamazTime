@@ -68,6 +68,16 @@
         <div class="divider"></div>
         <div class="small">Mark a prayer as <em>Missed</em> or <em>Made Up</em>. Stored on your device.</div>
       </section>
+      
+      <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a23">
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker Registered"));
+  }
+</script>
 
       <section class="card" id="tab-settings" hidden>
         <strong>Notifications & Preferences</strong>
